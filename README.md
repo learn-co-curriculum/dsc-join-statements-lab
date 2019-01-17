@@ -1,4 +1,16 @@
 
+# Join Statements - Lab
+
+## Introduction
+
+In this lab, you'll practice your knowledge on Join statements.
+
+## Objectives
+
+You will be able to:
+- Write queries that make use of various types of Joins
+- Join tables using foreign keys
+
 # CRM Schema
 
 In almost all cases, rather then just working with a single table we will typically need data from multiple tables. Doing this requires the use of **joins ** using shared columns from the two tables. For example, here's a diagram of a mock customer relation management database.
