@@ -1,5 +1,5 @@
 
-# Join Statements
+# Join Statements - Lab
 
 ## Introduction
 
