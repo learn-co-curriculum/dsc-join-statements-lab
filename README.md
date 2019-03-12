@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lab, you'll practice your knowledge on Join statements.
+In this lab, you'll practice your knowledge of join statements, using various types of joins and various methods for specifying the links between them.
 
 ## Objectives
 
@@ -33,6 +33,8 @@ cur = conn.cursor()
 
 # Display the names of all the employees in Boston.
 
+Hint: join the employees and customers tables.
+
 
 ```python
 #Your code here
@@ -52,6 +54,7 @@ cur.fetchall()
 
 
 # Do any offices have no employees?
+Hint: Combine the employees and offices tables and use a group by.
 
 
 ```python
@@ -125,6 +128,9 @@ df.head()
 
 ```python
 # No, but be sure to use a left join!!
+
+# Note: this question could also be answered using a having clause which you'll learn about later 
+#(HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.)
 ```
 
 # Write 3 Questions of your own and answer them
@@ -353,3 +359,7 @@ df.groupby([0,1]).count()
 </div>
 
 
+
+## Summary
+
+Congrats! You now know how to use join statements, along with leveraging your foreign keys knowledge!
