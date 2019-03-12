@@ -28,6 +28,7 @@ Import the necessary packages and connect to the database **data.sqlite**.
 ```
 
 ## Display the names of all the employees in Boston.
+Hint: join the employees and customers tables.
 
 
 ```python
@@ -35,6 +36,7 @@ Import the necessary packages and connect to the database **data.sqlite**.
 ```
 
 ## Do any offices have no employees?
+Hint: Combine the employees and offices tables and use a group by.
 
 
 ```python
