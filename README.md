@@ -11,12 +11,12 @@ You will be able to:
 - Write queries that make use of various types of Joins
 - Join tables using foreign keys
 
-# CRM Schema
+## CRM Schema
 
 In almost all cases, rather then just working with a single table we will typically need data from multiple tables. Doing this requires the use of **joins ** using shared columns from the two tables. For example, here's a diagram of a mock customer relation management database.
-<img src='images/Database-Schema.png' width=550>
+<img src='images/Database-Schema.png' width="600">
 
-# Connecting to the Database
+## Connecting to the Database
 Import the necessary packages and connect to the database **data.sqlite**.
 
 
@@ -31,7 +31,7 @@ conn = sqlite3.connect('data.sqlite', detect_types=sqlite3.PARSE_COLNAMES)
 cur = conn.cursor()
 ```
 
-# Display the names of all the employees in Boston.
+## Display the names of all the employees in Boston.
 
 Hint: join the employees and customers tables.
 
@@ -53,7 +53,7 @@ cur.fetchall()
 
 
 
-# Do any offices have no employees?
+## Do any offices have no employees?
 Hint: Combine the employees and offices tables and use a group by.
 
 
@@ -133,7 +133,7 @@ df.head()
 #(HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.)
 ```
 
-# Write 3 Questions of your own and answer them
+## Write 3 Questions of your own and answer them
 
 
 ```python
@@ -155,7 +155,7 @@ df.head()
 # Your code here
 ```
 
-# Level Up: Display the names of each product each employee has sold.
+## Level Up: Display the names of each product each employee has sold
 
 
 ```python
@@ -242,7 +242,7 @@ df.head()
 
 
 
-# Level Up: Display the Number of Products each Employee Has sold
+## Level Up: Display the Number of Products each employee has sold
 
 
 ```python
