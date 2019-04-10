@@ -14,7 +14,7 @@ You will be able to:
 # CRM Schema
 
 In almost all cases, rather then just working with a single table we will typically need data from multiple tables. Doing this requires the use of **joins ** using shared columns from the two tables. For example, here's a diagram of a mock customer relation management database.
-<img src='Database-Schema.png' width=550>
+<img src='images/Database-Schema.png' width=550>
 
 # Connecting to the Database
 Import the necessary packages and connect to the database **data.sqlite**.
