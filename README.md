@@ -17,7 +17,7 @@ In almost all cases, rather then just working with a single table you will typic
 Doing this requires the use of **joins ** using shared columns from the two tables. 
 
 In this lab, you'll use the same Customer Relationship Management (CRM) database that you saw from the previous lesson.
-<img src='images/Database-Schema.png' width=550>
+<img src='images/Database-Schema.png' width="600">
 
 ## Connecting to the Database
 Import the necessary packages and connect to the database **data.sqlite**.
