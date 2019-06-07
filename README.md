@@ -33,7 +33,7 @@ cur = conn.cursor()
 
 ## Display the names of all the employees in Boston.
 
-Hint: join the employees and customers tables.
+Hint: join the employees and offices tables.
 
 
 ```python
