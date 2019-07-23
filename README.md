@@ -362,4 +362,4 @@ df.groupby([0,1]).count()
 
 ## Summary
 
-Congrats! You now know how to use join statements, along with leveraging your foreign keys knowledge!
+Congratulations! You now know how to use join statements, along with leveraging your foreign keys knowledge!
