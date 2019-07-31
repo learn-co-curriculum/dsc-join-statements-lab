@@ -76,7 +76,7 @@ Hint: Combine the employees and offices tables and use a group by.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 ## Summary
