@@ -13,7 +13,10 @@ You will be able to:
 
 ## CRM Schema
 
-In almost all cases, rather then just working with a single table we will typically need data from multiple tables. Doing this requires the use of **joins ** using shared columns from the two tables. For example, here's a diagram of a mock customer relation management database.
+In almost all cases, rather then just working with a single table you will typically need data from multiple tables. 
+Doing this requires the use of **joins ** using shared columns from the two tables. 
+
+In this lab, you'll use the same Customer Relationship Management (CRM) database that you saw from the previous lesson.
 <img src='images/Database-Schema.png' width="600">
 
 ## Connecting to the Database
@@ -32,13 +35,7 @@ cur = conn.cursor()
 ```
 
 ## Display the names of all the employees in Boston.
-
 Hint: join the employees and offices tables.
-
-
-```python
-#Your code here
-```
 
 
 ```python
@@ -125,34 +122,11 @@ df.head()
 
 
 
-
-```python
-# No, but be sure to use a left join!!
-
-# Note: this question could also be answered using a having clause which you'll learn about later 
-#(HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.)
-```
-
 ## Write 3 Questions of your own and answer them
 
 
 ```python
 # Answers will vary
-```
-
-
-```python
-# Your code here
-```
-
-
-```python
-# Your code here
-```
-
-
-```python
-# Your code here
 ```
 
 ## Level Up: Display the names of each product each employee has sold
@@ -241,6 +215,14 @@ df.head()
 </div>
 
 
+
+
+```python
+# No, but be sure to use a left join!!
+
+# Note: this question could also be answered using a having clause which you'll learn about later 
+#(HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.)
+```
 
 ## Level Up: Display the Number of Products each employee has sold
 
@@ -362,4 +344,4 @@ df.groupby([0,1]).count()
 
 ## Summary
 
-Congratulations! You now know how to use join statements, along with leveraging your foreign keys knowledge!
+Congrats! You now know how to use join statements, along with leveraging your foreign keys knowledge!
