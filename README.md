@@ -34,9 +34,6 @@ import sqlite3
 import pandas as pd
 ```
 
-## Display the names of all the employees in Boston.
-Hint: join the employees and offices tables.
-
 
 ```python
 # __SOLUTION__ 
@@ -44,19 +41,8 @@ conn = sqlite3.connect('data.sqlite', detect_types=sqlite3.PARSE_COLNAMES)
 cur = conn.cursor()
 ```
 
-
-```python
-#Your code here
-```
-
-## Do any offices have no employees?
-Hint: Combine the employees and offices tables and use a group by.
-
-
-```python
-# __SOLUTION__ 
-#Your code here
-```
+## Display the names of all the employees in Boston.
+Hint: join the employees and offices tables.
 
 
 ```python
@@ -77,11 +63,12 @@ cur.fetchall()
 
 
 
-## Write 3 Questions of your own and answer them
+## Do any offices have no employees?
+Hint: Combine the employees and offices tables and use a group by.
 
 
 ```python
-# Answers will vary
+#Your code here
 ```
 
 
@@ -154,18 +141,16 @@ df.head()
 
 
 
+## Write 3 Questions of your own and answer them
+
 
 ```python
-# Your code here
+# Answers will vary
 ```
 
 
 ```python
-# __SOLUTION__ 
-# No, but be sure to use a left join!!
-
-# Note: this question could also be answered using a having clause which you'll learn about later 
-#(HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.)
+# Your code here
 ```
 
 
@@ -188,35 +173,8 @@ df.head()
 
 
 ```python
-# __SOLUTION__ 
 # Your code here
 ```
-
-
-```python
-# Your code here
-```
-
-
-```python
-# __SOLUTION__ 
-# Your code here
-```
-
-## Level Up: Display the Number of Products each employee has sold
-
-
-```python
-# __SOLUTION__ 
-# Your code here
-```
-
-
-```python
-#Your code here
-```
-
-## Summary
 
 
 ```python
@@ -304,7 +262,21 @@ df.head()
 
 
 
-Congrats! You now know how to use join statements, along with leveraging your foreign keys knowledge!
+
+```python
+# __SOLUTION__ 
+# No, but be sure to use a left join!!
+
+# Note: this question could also be answered using a having clause which you'll learn about later 
+#(HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.)
+```
+
+## Level Up: Display the Number of Products each employee has sold
+
+
+```python
+# Your code here
+```
 
 
 ```python
@@ -422,3 +394,7 @@ df.groupby([0,1]).count()
 </div>
 
 
+
+## Summary
+
+Congrats! You now know how to use join statements, along with leveraging your foreign keys knowledge!
