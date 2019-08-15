@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lab, you'll practice your knowledge of join statements, using various types of joins and various methods for specifying the links between them.
+In this lab, you'll practice your knowledge of `JOIN` statements, using various types of joins and various methods for specifying the links between them.
 
 ## Objectives
 
@@ -14,7 +14,7 @@ You will be able to:
 ## CRM Schema
 
 In almost all cases, rather then just working with a single table you will typically need data from multiple tables. 
-Doing this requires the use of **joins ** using shared columns from the two tables. 
+Doing this requires the use of **joins** using shared columns from the two tables. 
 
 In this lab, you'll use the same Customer Relationship Management (CRM) database that you saw from the previous lesson.
 <img src='images/Database-Schema.png' width="600">
@@ -30,7 +30,7 @@ import pandas as pd
 
 
 ```python
-conn = sqlite3.connect('data.sqlite', detect_types=sqlite3.PARSE_COLNAMES)
+conn = sqlite3.connect('data.sqlite')
 cur = conn.cursor()
 ```
 
@@ -39,29 +39,13 @@ Hint: join the employees and offices tables.
 
 
 ```python
-cur.execute("""select firstName, lastName from employees join offices using(officeCode) where city = 'Boston';""")
-cur.fetchall()
-```
-
-
-
-
-    [('Julie', 'Firrelli'), ('Steve', 'Patterson')]
-
-
-
-## Do any offices have no employees?
-Hint: Combine the employees and offices tables and use a group by.
-
-
-```python
-cur.execute("""select city,
-                    count(*)
-                    from offices
-                    left join employees
-                    using(officeCode)
-                    group by 1;""")
+cur.execute("""SELECT firstName, lastName 
+               FROM employees 
+               JOIN offices 
+               USING(officeCode) 
+               WHERE city = 'Boston';""")
 df = pd.DataFrame(cur.fetchall())
+df.columns = [i[0] for i in cur.description]
 df.head()
 ```
 
@@ -69,25 +53,82 @@ df.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>firstName</th>
+      <th>lastName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
       <th>0</th>
+      <td>Julie</td>
+      <td>Firrelli</td>
+    </tr>
+    <tr>
       <th>1</th>
+      <td>Steve</td>
+      <td>Patterson</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Are there any offices that have zero employees?
+Hint: Combine the employees and offices tables and use a group by.
+
+
+```python
+cur.execute("""SELECT city, COUNT(*)
+               FROM offices
+               LEFT JOIN employees
+               USING(officeCode)
+               GROUP BY city;""")
+df = pd.DataFrame(cur.fetchall())
+df.columns = [i[0] for i in cur.description]
+df.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>COUNT(*)</th>
     </tr>
   </thead>
   <tbody>
@@ -129,25 +170,27 @@ df.head()
 # Answers will vary
 ```
 
-## Level Up: Display the names of each product each employee has sold
+## Level Up: Display the names of every individual product that each employee has sold
 
 
 ```python
-cur.execute("""select firstName, lastName,
-                      productName
-                      from employees e
-                      join
-                      customers c
-                      on e.employeeNumber = c.salesRepEmployeeNumber
-                      join orders o
-                      using(customerNumber)
-                      join orderdetails od
-                      using(orderNumber)
-                      join products p
-                      using(productCode)""")
+cur.execute("""SELECT firstName, lastName, productName
+               FROM employees e
+               JOIN customers c
+               ON e.employeeNumber = c.salesRepEmployeeNumber
+               JOIN orders o
+               USING(customerNumber)
+               JOIN orderdetails od
+               USING(orderNumber)
+               JOIN products p
+               USING(productCode)""")
 df = pd.DataFrame(cur.fetchall())
+df.columns = [i[0] for i in cur.description]
 print(len(df))
 df.head()
+
+## NOTE: This question could also be answered using a HAVING clause which you learned about previously 
+## Remember, HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.
 ```
 
     2996
@@ -157,26 +200,26 @@ df.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
+      <th>firstName</th>
+      <th>lastName</th>
+      <th>productName</th>
     </tr>
   </thead>
   <tbody>
@@ -216,124 +259,150 @@ df.head()
 
 
 
-
-```python
-# No, but be sure to use a left join!!
-
-# Note: this question could also be answered using a having clause which you'll learn about later 
-#(HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.)
-```
-
 ## Level Up: Display the Number of Products each employee has sold
 
 
 ```python
-df.groupby([0,1]).count()
+cur.execute("""SELECT firstName, lastName, COUNT(productName)
+               FROM employees e
+               JOIN customers c                   
+               ON e.employeeNumber = c.salesRepEmployeeNumber
+               JOIN orders o 
+               USING(customerNumber)
+               JOIN orderdetails od 
+               USING(orderNumber)                    
+               JOIN products p 
+               USING(productCode)
+               GROUP BY lastName
+               ORDER BY firstName""")
+df = pd.DataFrame(cur.fetchall())
+df.columns = [i[0] for i in cur.description]
+print(len(df))
+df
+
+## NOTE: Another way to access this information would be to use the dataframe from 
+## the PREVIOUS "level up" question and call a pandas .groupby method like so:
+# df.groupby(['firstName','lastName']).count()
 ```
+
+    15
+
 
 
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th></th>
-      <th>2</th>
-    </tr>
-    <tr>
-      <th>0</th>
-      <th>1</th>
-      <th></th>
+      <th>firstName</th>
+      <th>lastName</th>
+      <th>COUNT(productName)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Andy</th>
-      <th>Fixter</th>
+      <th>0</th>
+      <td>Andy</td>
+      <td>Fixter</td>
       <td>185</td>
     </tr>
     <tr>
-      <th>Barry</th>
-      <th>Jones</th>
+      <th>1</th>
+      <td>Barry</td>
+      <td>Jones</td>
       <td>220</td>
     </tr>
     <tr>
-      <th>Foon Yue</th>
-      <th>Tseng</th>
+      <th>2</th>
+      <td>Foon Yue</td>
+      <td>Tseng</td>
       <td>142</td>
     </tr>
     <tr>
-      <th>George</th>
-      <th>Vanauf</th>
+      <th>3</th>
+      <td>George</td>
+      <td>Vanauf</td>
       <td>211</td>
     </tr>
     <tr>
-      <th>Gerard</th>
-      <th>Hernandez</th>
+      <th>4</th>
+      <td>Gerard</td>
+      <td>Hernandez</td>
       <td>396</td>
     </tr>
     <tr>
-      <th>Julie</th>
-      <th>Firrelli</th>
+      <th>5</th>
+      <td>Julie</td>
+      <td>Firrelli</td>
       <td>124</td>
     </tr>
     <tr>
-      <th>Larry</th>
-      <th>Bott</th>
+      <th>6</th>
+      <td>Larry</td>
+      <td>Bott</td>
       <td>236</td>
     </tr>
     <tr>
-      <th rowspan="2" valign="top">Leslie</th>
-      <th>Jennings</th>
+      <th>7</th>
+      <td>Leslie</td>
+      <td>Jennings</td>
       <td>331</td>
     </tr>
     <tr>
-      <th>Thompson</th>
+      <th>8</th>
+      <td>Leslie</td>
+      <td>Thompson</td>
       <td>114</td>
     </tr>
     <tr>
-      <th>Loui</th>
-      <th>Bondur</th>
+      <th>9</th>
+      <td>Loui</td>
+      <td>Bondur</td>
       <td>177</td>
     </tr>
     <tr>
-      <th>Mami</th>
-      <th>Nishi</th>
+      <th>10</th>
+      <td>Mami</td>
+      <td>Nishi</td>
       <td>137</td>
     </tr>
     <tr>
-      <th>Martin</th>
-      <th>Gerard</th>
+      <th>11</th>
+      <td>Martin</td>
+      <td>Gerard</td>
       <td>114</td>
     </tr>
     <tr>
-      <th>Pamela</th>
-      <th>Castillo</th>
+      <th>12</th>
+      <td>Pamela</td>
+      <td>Castillo</td>
       <td>272</td>
     </tr>
     <tr>
-      <th>Peter</th>
-      <th>Marsh</th>
+      <th>13</th>
+      <td>Peter</td>
+      <td>Marsh</td>
       <td>185</td>
     </tr>
     <tr>
-      <th>Steve</th>
-      <th>Patterson</th>
+      <th>14</th>
+      <td>Steve</td>
+      <td>Patterson</td>
       <td>152</td>
     </tr>
   </tbody>
