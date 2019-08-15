@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lab, you'll practice your knowledge of join statements, using various types of joins and various methods for specifying the links between them.
+In this lab, you'll practice your knowledge of `JOIN` statements, using various types of joins and various methods for specifying the links between them.
 
 ## Objectives
 
@@ -14,7 +14,7 @@ You will be able to:
 ## CRM Schema
 
 In almost all cases, rather then just working with a single table you will typically need data from multiple tables. 
-Doing this requires the use of **joins ** using shared columns from the two tables. 
+Doing this requires the use of **joins** using shared columns from the two tables. 
 
 In this lab, you'll use the same Customer Relationship Management (CRM) database that you saw from the previous lesson.
 <img src='images/Database-Schema.png' width="600">
@@ -35,7 +35,7 @@ Hint: join the employees and offices tables.
 #Your code here
 ```
 
-## Do any offices have no employees?
+## Are there any offices that have zero employees?
 Hint: Combine the employees and offices tables and use a group by.
 
 
@@ -48,6 +48,7 @@ Hint: Combine the employees and offices tables and use a group by.
 
 ```python
 # Answers will vary
+# Example: Display the htmlDescription and employee's first and last name for each product that each employee has sold
 ```
 
 
@@ -65,7 +66,7 @@ Hint: Combine the employees and offices tables and use a group by.
 # Your code here
 ```
 
-## Level Up: Display the names of each product each employee has sold
+## Level Up: Display the names of every individual product that each employee has sold
 
 
 ```python
