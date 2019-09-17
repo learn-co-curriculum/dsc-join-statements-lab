@@ -13,7 +13,7 @@ You will be able to:
 
 ## CRM Schema
 
-In almost all cases, rather then just working with a single table you will typically need data from multiple tables. 
+In almost all cases, rather than just working with a single table you will typically need data from multiple tables. 
 Doing this requires the use of **joins** using shared columns from the two tables. 
 
 In this lab, you'll use the same Customer Relationship Management (CRM) database that you saw from the previous lesson.
