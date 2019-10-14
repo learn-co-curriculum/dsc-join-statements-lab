@@ -8,15 +8,17 @@ In this lab, you'll practice your knowledge of `JOIN` statements, using various 
 ## Objectives
 
 You will be able to:
-- Write queries that make use of various types of Joins
-- Join tables using foreign keys
+* Write SQL queries that make use of various types of joins
+* Compare and contrast the various types of joins
+* Discuss how primary and foreign keys are used in SQL
+* Decide and perform whichever type of join is best for retrieving desired data
 
 ## CRM Schema
 
 In almost all cases, rather than just working with a single table you will typically need data from multiple tables. 
 Doing this requires the use of **joins** using shared columns from the two tables. 
 
-In this lab, you'll use the same Customer Relationship Management (CRM) database that you saw from the previous lesson.
+In this lab, you'll use the same customer relationship management (CRM) database that you saw from the previous lesson.
 <img src='images/Database-Schema.png' width="600">
 
 ## Connecting to the Database
@@ -82,4 +84,4 @@ Hint: Combine the employees and offices tables and use a group by.
 
 ## Summary
 
-Congrats! You now know how to use join statements, along with leveraging your foreign keys knowledge!
+Congrats! You practiced using join statements and leveraged your foreign keys knowledge!
