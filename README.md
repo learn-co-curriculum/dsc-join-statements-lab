@@ -8,15 +8,17 @@ In this lab, you'll practice your knowledge of `JOIN` statements, using various 
 ## Objectives
 
 You will be able to:
-- Write queries that make use of various types of Joins
-- Join tables using foreign keys
+* Write SQL queries that make use of various types of joins
+* Compare and contrast the various types of joins
+* Discuss how primary and foreign keys are used in SQL
+* Decide and perform whichever type of join is best for retrieving desired data
 
 ## CRM Schema
 
 In almost all cases, rather than just working with a single table you will typically need data from multiple tables. 
 Doing this requires the use of **joins** using shared columns from the two tables. 
 
-In this lab, you'll use the same Customer Relationship Management (CRM) database that you saw from the previous lesson.
+In this lab, you'll use the same customer relationship management (CRM) database that you saw from the previous lesson.
 <img src='images/Database-Schema.png' width="600">
 
 ## Connecting to the Database
@@ -237,7 +239,7 @@ print(len(df))
 df.head()
 
 ## NOTE: This question could also be answered using a HAVING clause which you learned about previously 
-## Remember, HAVING clauses are filters similar to the WHERE clause but are conditions applied after a group by.
+## Remember, HAVING clauses are filters similar to the WHERE clause but are conditions applied after a GROUP BY.
 ```
 
     2996
@@ -334,7 +336,7 @@ print(len(df))
 df
 
 ## NOTE: Another way to access this information would be to use the dataframe from 
-## the PREVIOUS "level up" question and call a pandas .groupby method like so:
+## the previous "level up" question and call a pandas .groupby method like so:
 # df.groupby(['firstName','lastName']).count()
 ```
 
@@ -466,4 +468,4 @@ df
 
 ## Summary
 
-Congrats! You now know how to use join statements, along with leveraging your foreign keys knowledge!
+Congrats! You practiced using join statements and leveraged your foreign keys knowledge!
