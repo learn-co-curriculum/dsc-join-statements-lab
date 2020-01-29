@@ -22,11 +22,11 @@ In this lab, you'll use the same customer relationship management (CRM) database
 <img src='images/Database-Schema.png' width="600">
 
 ## Connecting to the Database
-Import the necessary packages and connect to the database **data.sqlite**.
+Import the necessary packages and connect to the database `'data.sqlite'`.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 
@@ -43,12 +43,13 @@ conn = sqlite3.connect('data.sqlite')
 cur = conn.cursor()
 ```
 
-## Display the names of all the employees in Boston.
+## Display the names of all the employees in Boston 
+
 Hint: join the employees and offices tables.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 
@@ -111,76 +112,25 @@ Hint: Combine the employees and offices tables and use a group by.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 
 ```python
 # __SOLUTION__ 
-cur.execute("""SELECT city, COUNT(*)
+cur.execute("""SELECT city, COUNT(*) AS n_employees
                FROM offices
                LEFT JOIN employees
                USING(officeCode)
-               GROUP BY city;""")
-df = pd.DataFrame(cur.fetchall())
-df.columns = [i[0] for i in cur.description]
-df.head()
+               GROUP BY city
+               HAVING n_employees = 0;""")
+cur.fetchall()
 ```
 
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>city</th>
-      <th>COUNT(*)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Boston</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>London</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NYC</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Paris</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>San Francisco</td>
-      <td>6</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+    []
 
 
 
