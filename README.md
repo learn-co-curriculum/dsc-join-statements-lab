@@ -22,19 +22,20 @@ In this lab, you'll use the same customer relationship management (CRM) database
 <img src='images/Database-Schema.png' width="600">
 
 ## Connecting to the Database
-Import the necessary packages and connect to the database **data.sqlite**.
+Import the necessary packages and connect to the database `'data.sqlite'`.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
-## Display the names of all the employees in Boston.
+## Display the names of all the employees in Boston 
+
 Hint: join the employees and offices tables.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 ## Are there any offices that have zero employees?
@@ -42,7 +43,7 @@ Hint: Combine the employees and offices tables and use a group by.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 ## Write 3 Questions of your own and answer them
