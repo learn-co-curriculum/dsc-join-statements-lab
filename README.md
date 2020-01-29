@@ -118,19 +118,53 @@ Hint: Combine the employees and offices tables and use a group by.
 
 ```python
 # __SOLUTION__ 
-cur.execute("""SELECT city, COUNT(*) AS n_employees
-               FROM offices
-               LEFT JOIN employees
+cur.execute("""SELECT o.officeCode, o.city, COUNT(e.employeeNumber) AS n_employees
+               FROM offices AS o 
+               LEFT JOIN employees AS e
                USING(officeCode)
-               GROUP BY city
+               GROUP BY officeCode
                HAVING n_employees = 0;""")
-cur.fetchall()
+df = pd.DataFrame(cur.fetchall())
+df.columns = [i[0] for i in cur.description]
+df
 ```
 
 
 
 
-    []
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>officeCode</th>
+      <th>city</th>
+      <th>n_employees</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>27</td>
+      <td>Boston</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
