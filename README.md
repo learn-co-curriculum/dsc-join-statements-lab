@@ -7,6 +7,7 @@ In this lab, you'll practice your knowledge of `JOIN` statements, using various 
 ## Objectives
 
 You will be able to:
+
 * Write SQL queries that make use of various types of joins
 * Compare and contrast the various types of joins
 * Discuss how primary and foreign keys are used in SQL
