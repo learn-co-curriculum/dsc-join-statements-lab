@@ -16,7 +16,7 @@ You will be able to:
 ## CRM ERD
 
 In this lab, you'll use the same customer relationship management (CRM) database that you saw from the previous lesson.
-<img src='images/Database-Schema.png' width="600">
+<img src='https://curriculum-content.s3.amazonaws.com/data-science/images/Database-Schema.png' width="600">
 
 ## Connecting to the Database
 Import the necessary packages and connect to the database `'data.sqlite'`.
